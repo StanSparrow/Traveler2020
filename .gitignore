@@ -7,3 +7,5 @@
 .g.i.cs
 .lref
 .cs.dll
+bin/
+obj/
