@@ -1,0 +1,1 @@
+{"sIp":"127.0.0.1","sPort":"5432","sDatabaseName":"traveler","sUser":"traveler","sPassword":"93\\K"}

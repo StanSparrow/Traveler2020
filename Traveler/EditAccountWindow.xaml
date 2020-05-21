@@ -1,0 +1,130 @@
+﻿<local:CBaseWindow
+        xmlns:local="clr-namespace:NmspTraveler"
+        x:Class="NmspTraveler.CEditAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" BorderBrush="White" BorderThickness="2"
+        Title="CEditAccountWindow" Height="318" Width="484" WindowStartupLocation="CenterOwner"
+        WindowStyle="None" AllowsTransparency="True" MouseMove="OnWindowMouseMove" 
+        Loaded="OnWindowLoaded">
+    
+    <Grid ShowGridLines="False">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31" />
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="33" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Stretch="Fill" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/Caption.bmp"/>
+        
+        <Image Grid.Row="0" Grid.Column="0" Width="20" Height="20" Margin="5,0,0,5" VerticalAlignment="Bottom" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/Icon.bmp"/>
+
+        <Image Grid.Row="1" Grid.RowSpan="7" Grid.Column="0" Grid.ColumnSpan="4" Stretch="UniformToFill" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/SettingsBackGround.bmp"/>
+
+        <TextBlock x:Name="tbWindowCaption" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
+            FontFamily="Arial" Opacity="1.0" Margin="5,7,0,0" Foreground="White" FontSize="20" 
+            FontWeight="Bold" VerticalAlignment="Top" >
+            Traveler - Account Editing
+        </TextBlock>
+
+        <Button x:Name="btnLoginWindowCloseButton" ToolTip="Close" Focusable="False" Margin="0,7,7,0" 
+                Width="26" Height="26" Grid.Row="0" Grid.Column="3" Button.Click="OnCloseButton" Content="X"
+                FontFamily="Arial" Foreground="White" Background="Transparent" Opacity="1.0" 
+                FontSize="14" FontWeight="Bold" BorderBrush="White" >
+        </Button>
+
+
+
+        <TextBlock Grid.Column="1" Grid.Row="1" FontFamily="Arial" Opacity="1.0"
+            Margin="10,0,0,0" Foreground="White" FontSize="20" FontWeight="Bold" 
+            HorizontalAlignment="Left" VerticalAlignment="Center">
+            Role:
+        </TextBlock>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" FontFamily="Arial" Opacity="1.0"
+            Margin="10,0,0,0" Foreground="White" FontSize="20" FontWeight="Bold" 
+            HorizontalAlignment="Left" VerticalAlignment="Center">
+            Username:
+        </TextBlock>
+
+        <TextBlock Grid.Column="1" Grid.Row="3" FontFamily="Arial" Opacity="1.0"
+            Margin="10,0,0,0" Foreground="White" FontSize="20" FontWeight="Bold" 
+            HorizontalAlignment="Left" VerticalAlignment="Center">
+            Olg Password:
+        </TextBlock>
+        
+        <TextBlock Grid.Column="1" Grid.Row="4" FontFamily="Arial" Opacity="1.0"
+            Margin="10,0,0,0" Foreground="White" FontSize="20" FontWeight="Bold" 
+            HorizontalAlignment="Left" VerticalAlignment="Center">
+            Password:
+        </TextBlock>
+
+        <TextBlock Grid.Column="1" Grid.Row="5" FontFamily="Arial" Opacity="1.0"
+            Margin="10,0,0,0" Foreground="White" FontSize="20" FontWeight="Bold" 
+            HorizontalAlignment="Left" VerticalAlignment="Center">
+            Confirmation:
+        </TextBlock>
+
+
+        <ComboBox Name="cbRoles" Width="200" Height="30" Grid.Column="2" Grid.Row="1" 
+                Margin="0,0,0,0" Background="Transparent" FontSize="20" FontWeight="Bold" Opacity="1.0"
+                FontFamily="Arial" IsEditable="True" IsReadOnly="True" Text="Roles"
+                ToolTip="Roles" Foreground="White" BorderThickness="2" HorizontalAlignment="Left"
+                VerticalAlignment="Center" >
+
+            <ComboBox.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey }" Color="#43BDEE" />
+            </ComboBox.Resources>
+        </ComboBox>
+
+        <TextBox x:Name="tbUserName" Margin="0,0,0,0" Grid.Column="2" Grid.Row="2" 
+                FontFamily="Arial" FontSize="20" FontWeight="Bold" 
+                Foreground="White" BorderThickness="2" Background="Transparent" Height="30" 
+                Opacity="1.0" Width="200" HorizontalAlignment="Left" 
+                VerticalAlignment="Center" />
+
+        <PasswordBox Name="pbOldPassword" Height="30" Grid.Column="2" Grid.Row="3" 
+                Margin="0,0,0,0" Background="Transparent" FontSize="20" FontWeight="Bold" Opacity="1.0" 
+                ToolTip="Password" Foreground="White" BorderThickness="2" Width="200" HorizontalAlignment="Left"
+                VerticalAlignment="Center" />
+        
+        <PasswordBox Name="pbPassword" Height="30" Grid.Column="2" Grid.Row="4" 
+                Margin="0,0,0,0" Background="Transparent" FontSize="20" FontWeight="Bold" Opacity="1.0" 
+                ToolTip="Password" Foreground="White" BorderThickness="2" Width="200" HorizontalAlignment="Left"
+                VerticalAlignment="Center" />
+
+        <PasswordBox Name="pbPasswordConfirmation" Height="30" Grid.Column="2" Grid.Row="5" 
+                Margin="0,0,0,0" Background="Transparent" FontSize="20" FontWeight="Bold" Opacity="1.0" 
+                ToolTip="Confirmation" Foreground="White" BorderThickness="2" Width="200" HorizontalAlignment="Left"
+                VerticalAlignment="Center" />
+
+
+        <Button x:Name="btnOkButton" ToolTip="Apply the account" Focusable="False" Margin="0,0,0,0" 
+                Width="200" Height="30" Grid.Row="6" Grid.Column="1" Button.Click="OnOkButton" Content="Ok"
+                FontFamily="Arial" Foreground="White" Background="Transparent" Opacity="1.0" FontSize="20" 
+                FontWeight="Bold" BorderBrush="White" VerticalAlignment="Center" HorizontalAlignment="Left">
+        </Button>
+
+        <Button x:Name="btnCancelButton" ToolTip="Cancel the account" Focusable="False" Margin="0,0,0,0" 
+                Width="200" Height="30" Grid.Row="6" Grid.Column="2" 
+                Button.Click="OnCancelButton" Content="Cancel" FontFamily="Arial" Foreground="White" 
+                Background="Transparent" Opacity="1.0" FontSize="20" FontWeight="Bold" 
+                BorderBrush="White" VerticalAlignment="Center" HorizontalAlignment="Right">
+        </Button>
+
+    </Grid>
+</local:CBaseWindow>

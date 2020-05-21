@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Authors>Yoh Deadfall, Shay Rojansky</Authors>
+    <Description>GeoJSON plugin for Npgsql, allowing mapping of PostGIS geometry types to GeoJSON types.</Description>
+    <PackageTags>npgsql postgresql postgres postgis geojson spatial ado ado.net database sql</PackageTags>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="GeoJSON.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Npgsql/Npgsql.csproj" />
+  </ItemGroup>
+</Project>

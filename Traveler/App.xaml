@@ -1,0 +1,15 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              
+    >
+  
+    <!--StartupUri="CRouteWindow.xaml" x:Class="NmspTraveler.App"
+    It would be work if I would have StartupUri="CRouteWindow.xaml" x:Class="NmspTraveler.App", but It doesn't
+    <Application.Resources>
+        <FontFamily x:Key="Quantico">./Resource/Fonts/#Quantico</FontFamily>
+        <FontFamily x:Key="Lobster">./Resource/Fonts/#Lobster</FontFamily>
+        <FontFamily x:Key="IndieFlower">./Resource/Fonts/#Indie Flower</FontFamily>
+        <FontFamily x:Key="Pacifico">./Resource/Fonts/#Pacifico</FontFamily>
+    </Application.Resources> -->
+
+</Application>

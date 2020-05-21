@@ -1,0 +1,310 @@
+﻿<local:CBaseWindow
+        xmlns:local="clr-namespace:NmspTraveler" 
+        x:Class="NmspTraveler.CTicketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" BorderBrush="White" BorderThickness="2"
+        Title="TicketWindow" Height="776" Width="980" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" MouseMove="OnWindowMouseMove" Loaded="OnWindowLoaded">
+
+    <Window.Resources>
+        <FontFamily x:Key="Quantico">./Resource/Fonts/#Quantico</FontFamily>
+        <FontFamily x:Key="Lobster">./Resource/Fonts/#Lobster</FontFamily>
+        <FontFamily x:Key="IndieFlower">./Resource/Fonts/#Indie Flower</FontFamily>
+        <FontFamily x:Key="Pacifico">./Resource/Fonts/#Pacifico</FontFamily>
+        <FontFamily x:Key="EKR">./Resource/Fonts/#EKR</FontFamily>
+    </Window.Resources>
+
+
+    <Grid ShowGridLines="False" >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31"/>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="33" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="33"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Grid.ColumnSpan="10" Stretch="Fill" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/Caption.bmp"/>
+        
+        <Image Grid.Row="0" Grid.Column="0" Width="20" Height="20" Margin="5,0,0,5" VerticalAlignment="Bottom" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/Icon.bmp"/>
+
+        <Image Grid.Column="0" Grid.ColumnSpan="10" Grid.Row="1" Grid.RowSpan="24" Stretch="Fill" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/BackGround.bmp"/>
+
+        <Image Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="2" Grid.RowSpan="17" Stretch="Fill" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/TicketBackGround.bmp"/>
+
+
+        <Image Grid.Column="6" Grid.Row="2" Stretch="Uniform" Margin="0,5,0,0" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/AmericanFlag.png"/>
+
+        <Image Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="2" Stretch="Uniform" Margin="0,5,0,0" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/BusTicket.bmp"/>
+
+        <Image Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="18" Stretch="Uniform" Margin="0,0,0,5" 
+               Source="pack://siteoforigin:,,,/Resource/Pictures/BoardingPass.bmp" HorizontalAlignment="Center"/>
+        
+
+        <TextBlock x:Name="tbCaption" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="7" FontFamily="Arial" Opacity="1.0"
+            Margin="5,7,0,0" Foreground="White" FontSize="20" FontWeight="Bold" >
+            Traveler - Ticket
+        </TextBlock>
+
+       
+        <Button x:Name="btnTicketWindowCloseButton" ToolTip="Close" Focusable="False" Margin="0,7,7,0" 
+                Width="26" Height="26" Grid.Row="0" Grid.Column="9" Button.Click="OnCloseButton" Content="X"
+                FontFamily="Arial" Foreground="White" Background="Transparent" Opacity="1.0" 
+                FontSize="14" FontWeight="Bold" BorderBrush="White" >
+        </Button>
+
+        <Button x:Name="btnAddPassengerInformation" ToolTip="Add information about the passenger" Focusable="False" 
+                Margin="7,0,7,0" Width="auto" Height="30" Grid.Row="20" Grid.Column="1" Grid.ColumnSpan="5" 
+                Button.Click="OnAddPassengerInformationButton" Content="Add Passenger Information" 
+                FontFamily="Arial" Foreground="White" Background="Transparent" Opacity="1.0" 
+                FontSize="20" FontWeight="Bold" BorderBrush="White" >
+        </Button>
+
+        <Button x:Name="btnPrintTicket" ToolTip="Print the ticket" Focusable="False" Margin="7,0,7,0" 
+                Width="auto" Height="30" Grid.Row="20" Grid.Column="6" Grid.ColumnSpan="2" 
+                Button.Click="OnPrintButton" Content="Print the Ticket" FontFamily="Arial" 
+                Foreground="White" Background="Transparent" Opacity="1.0" FontSize="20" FontWeight="Bold"
+                BorderBrush="White" >
+        </Button>
+
+
+        <TextBlock Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="3" 
+            Margin="0,0,90,0" Foreground="Black" FontSize="30" FontWeight="Bold" 
+            HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Quantico}">
+            NYC BUS STATION
+        </TextBlock>
+
+
+        <TextBlock Grid.Column="5" Grid.Row="4" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >
+            Passenger First Name:
+        </TextBlock>
+        <TextBlock Name="tbPassengerFirstName" Grid.Column="6" Grid.Row="4" Grid.ColumnSpan="2" 
+            FontFamily="{StaticResource Quantico}" Margin="0,0,0,0" Foreground="Black" FontSize="20" 
+            FontWeight="Bold" VerticalAlignment="Center" >
+            No First Name
+        </TextBlock>
+
+        <TextBlock Grid.Column="5" Grid.Row="5" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >
+            Passenger Last Name:
+        </TextBlock>
+        <TextBlock Name="tbPassengerLastName" Grid.Column="6" Grid.Row="5" Grid.ColumnSpan="2" 
+            FontFamily="{StaticResource Quantico}" Margin="0,0,0,0" Foreground="Black" FontSize="20" 
+            FontWeight="Bold" VerticalAlignment="Center" >
+            No Last Name
+        </TextBlock>
+
+        <TextBlock Grid.Column="5" Grid.Row="6" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >
+            Passenger D.L. Number:
+        </TextBlock>
+        <TextBlock Name="tbPassengerDriverLicenseNumber" Grid.Column="6" Grid.Row="6" 
+            FontFamily="{StaticResource Quantico}" Margin="0,0,0,0" Foreground="Black" 
+            FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Grid.ColumnSpan="2" >
+            No Passenger D.L. Number
+        </TextBlock>
+
+        <TextBlock Grid.Column="5" Grid.Row="7" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >
+            From:
+        </TextBlock>
+        <TextBlock Name="tbFrom" Grid.Column="6" Grid.Row="7" Grid.ColumnSpan="2" 
+            FontFamily="{StaticResource Quantico}" Margin="0,0,0,0" Foreground="Black" 
+            FontSize="20" FontWeight="Bold" VerticalAlignment="Center" >
+            NEW YORK
+        </TextBlock>
+
+
+        <TextBlock Grid.Column="5"  Grid.Row="8" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            To:
+        </TextBlock>
+        <TextBlock Name="tbTo" Grid.Column="6" Grid.Row="8" Grid.ColumnSpan="2" 
+            FontFamily="{StaticResource Quantico}" Margin="0,0,0,0" Foreground="Black" 
+            FontSize="20" FontWeight="Bold" VerticalAlignment="Center" >   
+            SAN FRANCISCO, CALIFORNIA
+        </TextBlock>
+
+
+
+        <TextBlock Grid.Column="5" Grid.Row="9" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            Departure Date:
+        </TextBlock>
+        <TextBlock Grid.Column="5" Grid.Row="10" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold"  
+            VerticalAlignment="Center" >   
+            Departure Time:
+        </TextBlock>
+        <TextBlock Grid.Column="5" Grid.Row="11" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            Arrival Time:
+        </TextBlock>
+        <TextBlock Grid.Column="5" Grid.Row="12" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            Travel Time:
+        </TextBlock>
+        <TextBlock Grid.Column="5" Grid.Row="13" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            Vehicle Platform:
+        </TextBlock>
+        <TextBlock Grid.Column="5" Grid.Row="14" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold"  
+            VerticalAlignment="Center" >   
+            Vehicle:
+        </TextBlock>
+        <TextBlock Grid.Column="5" Grid.Row="15" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            Passenger Seat Number:
+        </TextBlock>
+        <TextBlock Grid.Column="5" Grid.Row="16" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            Driver:
+        </TextBlock>
+        <TextBlock Grid.Column="5" Grid.Row="17" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="30" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            Price:
+        </TextBlock>
+
+
+
+        <TextBlock Name="tbDepartureDate" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="9" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            No Date
+        </TextBlock>
+        <TextBlock Name="tbDepartureTime" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="10" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold"  
+            VerticalAlignment="Center" >   
+            01:03 am
+        </TextBlock>
+        <TextBlock Name="tbArrivalTime" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="11" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            01:03 am
+        </TextBlock>
+        <TextBlock Name="tbTravelTime" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="12" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            01:03
+        </TextBlock>
+        <TextBlock Name="tbVehiclePlatform" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="13" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            12
+        </TextBlock>
+        <TextBlock Name="tbVehicle" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="14" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            Minibus
+        </TextBlock>
+        <TextBlock Name="tbPassengerSeatNumber" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="15" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" 
+            VerticalAlignment="Center" >   
+            No Passenger Seat
+        </TextBlock>
+
+        <TextBlock Name="tbDriver" Grid.Column="6" Grid.Row="16" Grid.ColumnSpan="2" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" >   
+            San Hose
+        </TextBlock>
+        <TextBlock Name="tbPrice" Grid.Column="6" Grid.Row="17" Grid.ColumnSpan="2" FontFamily="{StaticResource Quantico}"
+            Margin="0,0,0,0" Foreground="Black" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" >   
+            500$
+        </TextBlock>
+
+
+        <TextBlock Name="tbTicketNumber1" Width="Auto" Height="50" Grid.Row="8" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="6"  
+         FontFamily="{StaticResource Quantico}" Margin="5,-90,0,0" Foreground="Black" FontSize="40" 
+         FontWeight="Bold" HorizontalAlignment="Left" >
+            <TextBlock.RenderTransform>
+                <TransformGroup >
+                    <ScaleTransform/>
+                    <SkewTransform />
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+                0 1 1 9 4 6
+            </TextBlock>
+
+        <TextBlock Width="610" Height="30" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="8" FontFamily="{StaticResource Quantico}"
+            Margin="0,4,0,0" Foreground="Black" FontSize="20" FontWeight="Bold"
+            HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+            ——————————————————————————————————————————————————————————————————————————————
+        </TextBlock>
+
+
+        <TextBlock Name="tbTicketNumber2" Width="Auto" Height="50" Grid.Row="8" Grid.RowSpan="3" Grid.Column="4" Grid.ColumnSpan="2" 
+         FontFamily="{StaticResource Quantico}" Margin="5,-90,0,0" Foreground="Black" FontSize="40" 
+         FontWeight="Bold" HorizontalAlignment="Left" >
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>       
+            0 1 1 9 4 6
+        </TextBlock>
+
+    </Grid>
+</local:CBaseWindow>
